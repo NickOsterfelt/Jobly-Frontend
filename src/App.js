@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import NavBar from "./NavBar"
+import Routes from "./Routes"
+import React, { useEffect, useState } from 'react';
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("_token")) {
+      setLoggedIn(true);
+    }
+    else {
+      setLoggedIn(false)
+    }
+  }, [loggedIn, setLoggedIn]);
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.setItem("_token", "");
+    
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <NavBar loggedIn={loggedIn} />
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+            <div className="col-10 mt-5">
+              <Routes loggedIn={loggedIn} handleLogout={handleLogout} handleLogin={setLoggedIn.bind(true)} />
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
-
 export default App;

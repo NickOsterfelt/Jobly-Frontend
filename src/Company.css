@@ -1,0 +1,20 @@
+.header-text{
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.header-image{
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    max-width: 150px;
+}
+
+.header-image img{
+    max-width: 150px;
+}
+
+a {
+    color: black;
+}
