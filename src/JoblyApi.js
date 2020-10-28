@@ -11,7 +11,7 @@ class JoblyApi {
         try {
             return (await axios({
                 method: verb,
-                url: `${BASE_URL}/${endpoint}`,
+                url: `${BASE_URL}${endpoint}`,
                 [verb === "get" ? "params" : "data"]: paramsOrData
             })).data;
             // axios sends query string data via the "params" key,

@@ -7,7 +7,7 @@ function NavBar({loggedIn}) {
 
   let navItems;
 
-  if (loggedIn === false) {
+  if (loggedIn === false) { //I don't know why !loggedIn does not work as intended...
     navItems = (
       <Nav className="ml-auto align-bottom p-2 px-5" navbar>
         <NavItem>
